@@ -1,0 +1,95 @@
+class Template3 extends AbstractTemplate {
+  constructor(containerElemId) {
+    super(containerElemId);
+    this.contentUri = 'templates/template-3/content.html';
+    this.cssUri = 'css/template-3.css';
+  }
+
+  renderData(data) {
+    if (!this.rendered) throw new Error('Render the Template first');
+
+    const fieldList = this.getConfig().fieldList || [];
+    fieldList.forEach((field) => {
+      const value = data[field.id] !== undefined ? data[field.id] : '';
+      this.rootElem.find(`#${field.id} .data`).text(value);
+    });
+
+    const pumpLogoList = this.getConfig().pumpLogoList || [];
+    pumpLogoList.forEach((field) => {
+      const value = data[field.id] || '';
+      if (value) this.rootElem.find(`#pumpLogo`).attr('src', value);
+    });
+
+    const paperTextureList = this.getConfig().paperTextureList || [];
+    paperTextureList.forEach((field) => {
+      const value = data[field.id] || '';
+      if (value) {
+        this.rootElem.find(`.template-container`).css('backgroundImage', `url('${value}')`);
+      }
+    });
+
+    const optionalFieldList = this.getConfig().optionalFieldList || [];
+    optionalFieldList.forEach((field) => {
+      const value = data[field.id];
+      if (value) {
+        this.rootElem.find(`#${field.refId}`).show();
+      } else {
+        this.rootElem.find(`#${field.refId}`).hide();
+      }
+    });
+  }
+
+  getConfig() {
+    return {
+      optionalFieldList: [
+        { id: 'showGST', name: 'GSTIN No.', refId: 'gstNo', value: 'true', checked: false },
+        { id: 'showCST', name: 'CST No', refId: 'cstNo', value: 'true', checked: false },
+        { id: 'showVAT', name: 'VAT No', refId: 'vatNo', value: 'true', checked: false },
+      ],
+      pumpLogoList: [
+        { id: 'pumpLogo', name: 'Indian Oil', uri: 'assets/images/logos/pump-logo-indian-oil.png', default: true },
+        { id: 'pumpLogo', name: 'HP Oil', uri: 'assets/images/logos/pump-logo-hp.png' },
+        { id: 'pumpLogo', name: 'Bharat Petroleum', uri: 'assets/images/logos/pump-logo-bharat-petroleum.png' },
+      ],
+      paperTextureList: [
+        { id: 'texture', name: 'Texture 1', uri: 'assets/images/textures/texture-1.jpeg' },
+        { id: 'texture', name: 'Texture 6', uri: 'assets/images/textures/texture-6.jpeg', default: true },
+      ],
+      fieldList: [
+        { id: 'name', name: 'Name', defaultValue: 'GOKUL FUEL POINT' },
+        { id: 'subAddress', name: 'Sub Address', defaultValue: 'BANGALORE' },
+        { id: 'address', name: 'Address', defaultValue: 'No. 36/1, Yelanahalli Beg' },
+        { id: 'attendantName', name: 'Attendant Name', defaultValue: 'Sendhil Kumar A' },
+        { id: 'date', name: 'Date', defaultValue: '02-09-2024' },
+        { id: 'time', name: 'Time', defaultValue: '11:36:02' },
+        { id: 'mid', name: 'MID', defaultValue: '47000009923321' },
+        { id: 'tid', name: 'TID', defaultValue: '00608672' },
+        { id: 'batchNo', name: 'Batch No', defaultValue: '000114' },
+        { id: 'invoiceNo', name: 'Invoice No', defaultValue: '002394' },
+        { id: 'gstNo', name: 'GSTIN', defaultValue: '' },
+        { id: 'cstNo', name: 'CST', defaultValue: '' },
+        { id: 'vatNo', name: 'VAT', defaultValue: '' },
+        { id: 'card', name: 'Card', defaultValue: '**** **** **** 1234 CLSS' },
+        { id: 'cardType', name: 'Card Type', defaultValue: 'MASTERCARD' },
+        { id: 'expDate', name: 'Exp Date', defaultValue: '**/**' },
+        { id: 'txnType', name: 'Txn Type', defaultValue: 'CARD' },
+        { id: 'apprCode', name: 'APPR Code', defaultValue: '15930' },
+        { id: 'rrn', name: 'RRN', defaultValue: '090200003919' },
+        { id: 'tc', name: 'TC', defaultValue: '560E803334B60636' },
+        { id: 'tsi', name: 'TSI', defaultValue: '0000' },
+        { id: 'atc', name: 'ATC', defaultValue: '******' },
+        { id: 'tvr', name: 'TVR', defaultValue: '000000801' },
+        { id: 'aid', name: 'AID', defaultValue: 'A0000000041010' },
+        { id: 'product', name: 'Product', defaultValue: 'Petrol' },
+        { id: 'txnId', name: 'TXN ID', defaultValue: '2409020060862113540' },
+        { id: 'unitPrice', name: 'Unit Price', defaultValue: '₹ 102.86' },
+        { id: 'quantity', name: 'Quantity', defaultValue: '1.944 Ltr' },
+        { id: 'pumpNo', name: 'Pump No', defaultValue: '8' },
+        { id: 'nozzleNo', name: 'Nozzle No', defaultValue: '1' },
+        { id: 'totalSale', name: 'Total Sale', defaultValue: '₹ 200.00' },
+        { id: 'netAmount', name: 'Net Amount', defaultValue: '₹ 200.00' },
+        { id: 'version', name: 'Software Version', defaultValue: '1.06.09_20240607' },
+      ],
+    };
+  }
+}

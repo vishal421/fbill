@@ -1,0 +1,13 @@
+{
+  "name": "fuel-receipt-generator",
+  "version": "1.0.0",
+  "description": "Fuel pump PoS receipt generator",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

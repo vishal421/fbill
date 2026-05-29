@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fuel Receipt Generator</title>
+  <link rel="stylesheet" href="css/common.css" />
+</head>
+<body>
+
+<div class="app-wrapper">
+
+  <!-- ====== LEFT CONTROL PANEL ====== -->
+  <aside class="control-panel">
+
+    <div class="panel-title">⛽ <span>Fuel</span> Receipt Generator</div>
+
+    <!-- Template Selection -->
+    <div class="section-block">
+      <div class="section-header">Template</div>
+      <div class="section-body">
+        <label class="option-label">
+          <input type="radio" name="template" value="0" checked />
+          Template 1 — Thermal
+        </label>
+        <label class="option-label">
+          <input type="radio" name="template" value="1" />
+          Template 3 — Card Payment
+        </label>
+      </div>
+    </div>
+
+    <!-- Paper Texture -->
+    <div class="section-block" id="section-paper-texture">
+      <div class="section-header">Paper Texture</div>
+      <div class="section-body">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- Pump Logo -->
+    <div class="section-block" id="section-pump-logo">
+      <div class="section-header">Pump Logo</div>
+      <div class="section-body">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- Optional Fields -->
+    <div class="section-block" id="section-optional-fields">
+      <div class="section-header">Optional Fields</div>
+      <div class="section-body">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- Data Fields -->
+    <div class="section-block" id="section-data">
+      <div class="section-header">Receipt Data</div>
+      <div class="section-body" style="padding: 10px 12px;">
+        <div class="fields-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+          <!-- populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-generate" id="btn-generate">▶ Generate Receipt</button>
+    <button class="btn-print" id="btn-print">🖨 Print</button>
+
+  </aside>
+
+  <!-- ====== RIGHT PREVIEW PANEL ====== -->
+  <main class="preview-panel">
+
+    <div class="preview-label">— Receipt Preview —</div>
+
+    <!-- Zoom bar -->
+    <div class="zoom-bar">
+      <label>Zoom</label>
+      <input type="range" id="percentage-slider" min="50" max="150" value="100" />
+      <span id="slider-value">100%</span>
+    </div>
+
+    <!-- Receipt renders here -->
+    <div id="template-container"></div>
+
+  </main>
+
+</div>
+
+<!-- Scripts -->
+<script src="js/abstract-template.js"></script>
+<script src="js/template1.js"></script>
+<script src="js/template3.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>
