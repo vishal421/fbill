@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fuel Receipt Generator</title>
+  <link rel="stylesheet" href="css/common.css" />
+</head>
+<body>
+
+<div class="app-wrapper">
+
+  <!-- ====== LEFT CONTROL PANEL ====== -->
+  <aside class="control-panel">
+
+    <div class="panel-title">
+      ⛽ <span>Fuel</span> Receipt Generator
+      <span class="title-sub">Fill in Your Information and Generate Fuel Bill</span>
+    </div>
+
+    <!-- Template Selection -->
+    <div class="section-block">
+      <div class="section-header">Select Your Template</div>
+      <div class="section-body" id="section-template-body">
+        <label class="template-card">
+          <input type="radio" name="template" value="0" checked />
+          <div class="card-label">
+            Template 1
+            <span class="card-sub">Thermal Receipt Style</span>
+          </div>
+        </label>
+        <label class="template-card">
+          <input type="radio" name="template" value="1" />
+          <div class="card-label">
+            Template 3
+            <span class="card-sub">Card Payment Style</span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Paper Texture -->
+    <div class="section-block" id="section-paper-texture">
+      <div class="section-header">Select Paper Texture</div>
+      <div class="section-body visual-options">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- Pump Logo -->
+    <div class="section-block" id="section-pump-logo">
+      <div class="section-header">Select Pump Logo</div>
+      <div class="section-body visual-options">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- Optional Fields -->
+    <div class="section-block" id="section-optional-fields">
+      <div class="section-header">Optional Fields</div>
+      <div class="section-body">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- Data Fields -->
+    <div class="section-block" id="section-data">
+      <div class="section-header">Enter Data</div>
+      <div class="section-body" style="padding: 12px 18px;">
+        <div class="fields-grid">
+          <!-- populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky Buttons -->
+    <div class="btn-area">
+      <button class="btn-generate" id="btn-generate">▶ Generate Receipt</button>
+      <button class="btn-download" id="btn-download">⬇ Download PNG</button>
+    </div>
+
+  </aside>
+
+  <!-- ====== RIGHT PREVIEW PANEL ====== -->
+  <main class="preview-panel">
+
+    <div class="preview-header">
+      <div class="preview-label">
+        Receipt Preview
+        <span>Live preview updates as you type</span>
+      </div>
+      <!-- Zoom bar -->
+      <div class="zoom-bar">
+        <label>Zoom</label>
+        <input type="range" id="percentage-slider" min="50" max="150" value="100" />
+        <span id="slider-value">100%</span>
+      </div>
+    </div>
+
+    <!-- Receipt renders here -->
+    <div class="preview-card">
+      <div id="template-container"></div>
+    </div>
+
+  </main>
+
+</div>
+
+<!-- Scripts -->
+<script src="js/abstract-template.js"></script>
+<script src="js/template1.js"></script>
+<script src="js/template3.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>
