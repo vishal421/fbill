@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2138999300349752" crossorigin="anonymous"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free Fuel Bill Generator | Petrol Bill Generator | Diesel Receipt Generator India</title>
+  <meta name="description" content="Free online fuel bill generator. Create petrol bill, diesel bill, fuel receipt and fuel invoice instantly. Indian Oil, HP, Bharat Petroleum bills with GST, logo, date and amount. Download PDF. Perfect for office reimbursement and travel expense claims." />
+  <meta name="keywords" content="fuel bill generator, petrol bill generator, diesel bill generator, fuel receipt generator, fuel invoice generator, petrol receipt generator, online fuel bill generator, free fuel bill generator, generate fuel bill online, petrol pump bill generator, generate petrol bill online free, create fuel bill with GST, fuel bill generator with date and amount, fuel receipt generator for reimbursement, petrol bill maker online free India, diesel bill generator with logo, generate fuel receipt instantly, fuel bill generator without watermark, download fuel bill PDF, printable fuel receipt generator, create petrol pump receipt online, fuel bill generator for office reimbursement, generate fuel bill for travel expenses, petrol bill format download, fuel expense bill generator, fuel bill generator with logo, fuel bill generator with template, custom fuel receipt generator, PoS receipt generator, thermal receipt generator, fuel bill generator with GST number, fuel bill generator with custom date, fuel bill generator with amount calculation, receipt generator petrol pump style, realistic fuel receipt generator, fuel bill generator India, petrol bill generator India, diesel bill generator India, petrol receipt generator India, fuel receipt generator India, Indian oil bill generator, HP petrol bill generator, Bharat Petroleum bill generator, fuel bill for reimbursement India, GST fuel bill generator India, online petrol bill maker India, fuel invoice generator India, how to generate fuel bill online, how to create petrol receipt, fuel bill for reimbursement, create fuel bill instantly, generate petrol bill for office, fuel receipt for travel claim, how to download fuel bill, fuel bill generator for employees, petrol bill for expense claim, diesel receipt generator for business, fuelbill.in, fuelbill generator, fuelbill receipt generator, fuelbill online tool, fuelbill petrol receipt, fuelbill India, fuel bill maker, petrol bill maker, diesel receipt maker, fuel slip generator, petrol slip generator, fuel bill sample, petrol bill sample PDF, fuel invoice format, petrol receipt format, fuel bill template, petrol bill template, free online receipt generator fuel, instant fuel receipt generator, best fuel bill generator India, free petrol bill maker tool, online petrol invoice generator, digital fuel receipt generator, easy fuel bill generator" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="FuelBill.in" />
+  <link rel="canonical" href="https://fuelbill.in/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Free Fuel Bill Generator | Petrol &amp; Diesel Receipt Generator India" />
+  <meta property="og:description" content="Generate realistic petrol, diesel and fuel bills online for free. Supports Indian Oil, HP, Bharat Petroleum. Add GST, logo, custom date and amount. Download PDF instantly." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://fuelbill.in/" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Free Fuel Bill Generator India" />
+  <meta name="twitter:description" content="Create petrol, diesel and fuel receipts online for free. Perfect for office reimbursement and travel expense claims." />
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free Fuel Bill Generator",
+    "url": "https://fuelbill.in/",
+    "description": "Free online tool to generate petrol bill, diesel bill, fuel receipt and fuel invoice. Supports Indian Oil, HP and Bharat Petroleum logos. Add GST number, custom date, amount and download as PDF.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+    "keywords": "fuel bill generator, petrol bill generator, diesel bill generator, fuel receipt generator, India"
+  }
+  </script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/common.css" />
+  <style>
+    body { background-color: #f8f9fa; }
+
+    /* ── Template selector pills ── */
+    .tpl-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      border: 1.5px solid #ddd;
+      border-radius: 20px;
+      margin-right: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all .15s;
+      background: #fff;
+    }
+    .tpl-label:has(input:checked) {
+      border-color: #337ab7;
+      background: #eaf3fb;
+      color: #337ab7;
+      font-weight: 600;
+    }
+
+    /* ── Texture pills (text-only) ── */
+    .texture-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 14px;
+      border: 1.5px solid #ddd;
+      border-radius: 20px;
+      margin: 4px 6px 4px 0;
+      cursor: pointer;
+      font-size: 13px;
+      background: #fff;
+      transition: all .15s;
+    }
+    .texture-pill:has(input:checked) {
+      border-color: #337ab7;
+      background: #eaf3fb;
+      color: #337ab7;
+      font-weight: 600;
+    }
+    .texture-pill input { display: none; }
+
+    /* ── Logo tiles ── */
+    .logo-tile {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      margin: 5px 10px 5px 0;
+      cursor: pointer;
+      vertical-align: top;
+    }
+    .logo-tile img {
+      width: 72px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 5px;
+      border: 2px solid #ddd;
+      background: #fff;
+      padding: 3px;
+      transition: border-color .15s;
+    }
+    .logo-tile:has(input:checked) img { border-color: #337ab7; }
+    .logo-tile span { font-size: 11px; color: #555; text-align: center; }
+
+    /* ── Optional-field checkboxes ── */
+    .opt-field-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 4px 14px 4px 0;
+      font-weight: normal;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    /* ── Data input fields ── */
+    .data-field-group { margin-bottom: 10px; }
+    .data-field-group label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 3px;
+      letter-spacing: 0.4px;
+    }
+    .data-field-group input[type=text] {
+      width: 100%;
+      padding: 5px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 12px;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .data-field-group input[type=text]:focus {
+      border-color: #337ab7;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(51,122,183,.15);
+    }
+
+    /* ── Preview column ── */
+    #preview-col {
+      position: sticky;
+      top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #preview-col .zoom-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 6px 14px;
+      width: 100%;
+      justify-content: center;
+    }
+    #preview-col .zoom-row label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #666;
+      letter-spacing: 0.4px;
+      margin: 0;
+    }
+    #preview-col .zoom-row input[type=range] {
+      width: 110px;
+      accent-color: #337ab7;
+      cursor: pointer;
+    }
+    #preview-col .zoom-row span {
+      font-size: 11px;
+      font-weight: 700;
+      color: #333;
+      min-width: 36px;
+    }
+    #template-container {
+      display: inline-block;
+      transform: rotate(-0.3deg);
+      filter: drop-shadow(0 8px 28px rgba(0,0,0,0.18));
+      
+    }
+
+    /* ── Hide the native radio/checkbox dots inside logo tiles ── */
+    .logo-tile input { display: none; }
+  </style>
+</head>
+<body>
+
+<div class="container" style="margin-top: 20px; margin-bottom: 40px;">
+  <div class="text-center" style="margin-bottom: 20px;">
+    <h2>Free Fuel Bill Generator</h2>
+    <p class="lead">Fill in Your Information and Generate Fuel Bill</p>
+  </div>
+
+  <div class="row">
+
+    <!-- ═══════ LEFT: Controls ═══════ -->
+    <div class="col-md-7">
+
+      <!-- Template -->
+      <div class="panel panel-primary">
+        <div class="panel-heading">Select Your Template</div>
+        <div class="panel-body">
+          <label class="tpl-label">
+            <input type="radio" name="template" value="0" checked />
+            Template 1 &nbsp;<small style="color:#aaa;font-weight:400">Thermal Receipt</small>
+          </label>
+          <label class="tpl-label">
+            <input type="radio" name="template" value="1" />
+            Template 2 &nbsp;<small style="color:#aaa;font-weight:400">Card Payment</small>
+          </label>
+        </div>
+      </div>
+
+      <!-- Paper Texture — populated by JS -->
+      <div class="panel panel-primary" id="section-paper-texture">
+        <div class="panel-heading">Select Paper Texture</div>
+        <div class="panel-body"></div>
+      </div>
+
+      <!-- Pump Logo — populated by JS -->
+      <div class="panel panel-primary" id="section-pump-logo">
+        <div class="panel-heading">Select Pump Logo</div>
+        <div class="panel-body"></div>
+      </div>
+
+      <!-- Optional Fields — populated by JS -->
+      <div class="panel panel-primary" id="section-optional-fields">
+        <div class="panel-heading">Optional Fields</div>
+        <div class="panel-body"></div>
+      </div>
+
+      <!-- Enter Data — populated by JS -->
+      <div class="panel panel-primary" id="section-data">
+        <div class="panel-heading">Enter Data</div>
+        <div class="panel-body">
+          <div class="row"></div>
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div style="margin-bottom: 30px;">
+        <button type="button" class="btn btn-default" disabled>Load Last Saved Data</button>
+        <button type="button" class="btn btn-default" id="loadDefaultData">Reset</button>
+        <button type="button" class="btn btn-default" id="generate">Preview</button>
+        <button type="button" class="btn btn-primary"  id="downloadButton">Download</button>
+      </div>
+
+    </div><!-- /.col-md-7 -->
+
+    <!-- ═══════ RIGHT: Preview ═══════ -->
+    <div class="col-md-5" id="preview-col">
+      <div class="zoom-row">
+        <label>Zoom</label>
+        <input type="range" id="percentage-slider" min="0" max="100" value="100" />
+        <span id="zoom-label">100%</span>
+      </div>
+      <div id="template-container"></div>
+    </div>
+
+  </div><!-- /.row -->
+</div><!-- /.container -->
+
+<!-- SEO keyword content – crawler accessible, visually hidden -->
+<div style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;" aria-hidden="true">fuel bill generator petrol bill generator diesel bill generator fuel receipt generator fuel invoice generator petrol receipt generator online fuel bill generator free fuel bill generator generate fuel bill online petrol pump bill generator generate petrol bill online free create fuel bill with GST fuel bill generator with date and amount fuel receipt generator for reimbursement petrol bill maker online free India diesel bill generator with logo generate fuel receipt instantly fuel bill generator without watermark download fuel bill PDF printable fuel receipt generator create petrol pump receipt online fuel bill generator for office reimbursement generate fuel bill for travel expenses petrol bill format download fuel expense bill generator online fuel bill generator with logo fuel bill generator with template custom fuel receipt generator PoS receipt generator thermal receipt generator online fuel bill generator with GST number fuel bill generator with custom date fuel bill generator with amount calculation receipt generator petrol pump style realistic fuel receipt generator fuel bill generator India petrol bill generator India diesel bill generator India petrol receipt generator India fuel receipt generator India Indian oil bill generator HP petrol bill generator Bharat Petroleum bill generator fuel bill for reimbursement India GST fuel bill generator India online petrol bill maker India fuel invoice generator India how to generate fuel bill online how to create petrol receipt fuel bill for reimbursement create fuel bill instantly generate petrol bill for office fuel receipt for travel claim how to download fuel bill fuel bill generator for employees petrol bill for expense claim diesel receipt generator for business fuelbill.in fuelbill generator fuelbill receipt generator fuelbill online tool fuelbill petrol receipt fuelbill India fuel bill maker petrol bill maker diesel receipt maker fuel slip generator petrol slip generator fuel bill sample petrol bill sample PDF fuel invoice format petrol receipt format fuel bill template petrol bill template free online receipt generator fuel fuel bill generator fast instant fuel receipt generator best fuel bill generator India free petrol bill maker tool fuel bill generator app online petrol invoice generator digital fuel receipt generator fuel bill generator website easy fuel bill generator</div>
+
+<!-- Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- App JS (order matters) -->
+<script src="assets/js/common.js"></script>
+<script src="templates/AbstractTemplate.js"></script>
+<script src="templates/template-1/Template1.js"></script>
+<script src="templates/template-2/Template2.js"></script>
+
+<script>
+  // Instantiate templates (index matches radio value)
+  var templates = [
+    new Template1('template-container'),  // value="0"
+    new Template2('template-container'),  // value="1"
+  ];
+
+  $(document).ready(async function () {
+
+    // Boot
+    await onInit();
+
+    // Template switch
+    $('input[name="template"]').on('change', async function () {
+      await onTemplateSelected();
+    });
+
+    // Preview button
+    $('#generate').on('click', function () {
+      generate(template);
+    });
+
+    // Reset button
+    $('#loadDefaultData').on('click', async function () {
+      await onTemplateSelected();
+    });
+
+    // Download button
+    $('#downloadButton').on('click', function () {
+      downloadReceipt();
+    });
+
+  });
+</script>
+
+<script async src="https://cdn.splitbee.io/sb.js"></script>
+</body>
+</html>
