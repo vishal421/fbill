@@ -1,0 +1,255 @@
+/* ========== FONTS ========== */
+@font-face {
+  font-family: "Thermal-Receipt";
+  src: url("assets/fonts/thermal-receipt.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Arial";
+  src: url("assets/fonts/arial.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ========== RESET & BASE ========== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #1a1a1a;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, #2a1f0e 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, #0e1a0e 0%, transparent 50%);
+  font-family: 'Courier New', Courier, monospace;
+  color: #333;
+  min-height: 100vh;
+}
+
+/* ========== LAYOUT ========== */
+.app-wrapper {
+  display: flex;
+  min-height: 100vh;
+  gap: 0;
+}
+
+/* ========== LEFT PANEL (Controls) ========== */
+.control-panel {
+  width: 320px;
+  min-width: 280px;
+  flex-shrink: 0;
+  background: #111;
+  border-right: 1px solid #2a2a2a;
+  overflow-y: auto;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.panel-title {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #888;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.panel-title span {
+  color: #e5a22b;
+}
+
+.section-block {
+  border: 1px solid #222;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.section-header {
+  background: #1a1a1a;
+  padding: 7px 12px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #666;
+  font-family: 'Courier New', monospace;
+  border-bottom: 1px solid #222;
+}
+
+.section-body {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Radio / Checkbox options */
+.option-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #aaa;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  padding: 3px 0;
+  transition: color 0.15s;
+}
+
+.option-label:hover { color: #ddd; }
+
+.option-label input[type="radio"],
+.option-label input[type="checkbox"] {
+  accent-color: #e5a22b;
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+/* Form fields */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.field-group label {
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #555;
+  font-family: 'Courier New', monospace;
+}
+
+.field-group input[type="text"] {
+  background: #0d0d0d;
+  border: 1px solid #2a2a2a;
+  border-radius: 3px;
+  color: #bbb;
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  padding: 5px 7px;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+
+.field-group input[type="text"]:focus {
+  border-color: #e5a22b;
+  color: #eee;
+}
+
+.btn-generate {
+  background: #e5a22b;
+  color: #111;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 16px;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s, transform 0.1s;
+  margin-top: 6px;
+}
+
+.btn-generate:hover { background: #f0b845; }
+.btn-generate:active { transform: scale(0.98); }
+
+.btn-download {
+  background: #1e3a1e;
+  color: #6fcf6f;
+  border: 1px solid #2a5a2a;
+  border-radius: 3px;
+  padding: 9px 16px;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn-download:hover { background: #254a25; }
+.btn-download:active { transform: scale(0.98); }
+.btn-download:disabled { opacity: 0.5; cursor: wait; }
+
+/* ========== RIGHT PANEL (Receipt Preview) ========== */
+.preview-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 30px 20px;
+  background: #161616;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+
+.preview-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #444;
+  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 20px;
+}
+
+/* Zoom controls */
+.zoom-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.zoom-bar label {
+  font-size: 9px;
+  color: #555;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.zoom-bar input[type="range"] {
+  accent-color: #e5a22b;
+  width: 100px;
+}
+
+.zoom-bar span {
+  font-size: 9px;
+  color: #888;
+  font-family: 'Courier New', monospace;
+  min-width: 35px;
+}
+
+/* Receipt wrapper - the "tape" holder */
+#template-container {
+  transform: rotate(-0.3deg);
+  filter: drop-shadow(0 8px 32px rgba(0,0,0,0.9));
+  transition: zoom 0.2s;
+  position: relative;
+}
