@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2138999300349752" crossorigin="anonymous"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free Fuel Bill Generator | Petrol & Diesel Receipt Maker India | FuelBill.in</title>
+  <meta name="description" content="Generate realistic petrol and diesel bills online for free. Choose from Indian Oil, HP, Bharat Petroleum templates. Add GST, logo, date, amount. Download instantly. No signup required." />
+  <meta name="keywords" content="fuel bill generator, petrol bill generator, diesel bill generator, fuel receipt generator, fuel invoice generator, petrol receipt generator, online fuel bill generator, free fuel bill generator, generate fuel bill online, petrol pump bill generator" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="FuelBill.in" />
+  <link rel="canonical" href="https://fuelbill.in/generator" />
+  <meta property="og:title" content="Free Fuel Bill Generator | FuelBill.in" />
+  <meta property="og:description" content="Generate realistic petrol & diesel bills online. Indian Oil, HP, Bharat Petroleum templates. Free, no signup." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://fuelbill.in/generator" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Free Fuel Bill Generator | FuelBill.in" />
+  <meta name="twitter:description" content="Create petrol, diesel and fuel receipts online for free." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free Fuel Bill Generator",
+    "url": "https://fuelbill.in/generator",
+    "description": "Free online tool to generate petrol bill, diesel bill, fuel receipt. Supports Indian Oil, HP and Bharat Petroleum logos.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+  }
+  </script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/common.css" />
+
+  <style>
+    /* ── DESIGN TOKENS (match index.html exactly) ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:       #0f1923;
+      --ink2:      #374151;
+      --muted:     #6b7280;
+      --line:      #e5e7eb;
+      --bg:        #f7f8fa;
+      --white:     #ffffff;
+      --blue:      #1a56db;
+      --blue-dark: #1648c0;
+      --blue-light:#eef3ff;
+      --green:     #16a34a;
+      --amber:     #d97706;
+      --radius:    10px;
+      --shadow-sm: 0 1px 4px rgba(0,0,0,.06);
+      --shadow-md: 0 4px 20px rgba(0,0,0,.08);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container-main { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+    /* ── NAV (identical to index.html) ── */
+    .nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      display: flex; align-items: center;
+      justify-content: space-between; height: 56px;
+      max-width: 1080px; margin: 0 auto; padding: 0 20px;
+    }
+    .nav-logo { font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: -0.4px; }
+    .nav-logo span { color: var(--blue); }
+    .nav-links { display: flex; align-items: center; gap: 6px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; font-weight: 500; color: var(--ink2);
+      padding: 6px 12px; border-radius: 6px; transition: background .15s;
+    }
+    .nav-links a:hover { background: var(--blue-light); text-decoration: none; color: var(--blue); }
+    .nav-links a.active { background: var(--blue-light); color: var(--blue); font-weight: 600; }
+    .nav-cta {
+      background: var(--blue) !important; color: var(--white) !important;
+      font-weight: 600 !important; padding: 7px 16px !important;
+    }
+    .nav-cta:hover { background: var(--blue-dark) !important; }
+
+    /* ── PAGE HEADER STRIP ── */
+    .page-header-strip {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      padding: 28px 0 24px;
+      text-align: center;
+    }
+    .page-header-strip h1 {
+      font-size: 26px; font-weight: 800;
+      color: var(--ink); letter-spacing: -0.5px; margin-bottom: 6px;
+    }
+    .page-header-strip p {
+      font-size: 14px; color: var(--muted); margin: 0;
+    }
+    .page-header-strip .breadcrumb-bar {
+      font-size: 12px; color: var(--muted);
+      margin-bottom: 10px; display: flex;
+      align-items: center; justify-content: center; gap: 6px;
+    }
+    .page-header-strip .breadcrumb-bar a { color: var(--blue); }
+    .page-header-strip .breadcrumb-bar span { color: var(--muted); }
+
+    /* ── MAIN CONTENT GRID ── */
+    .gen-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 24px;
+      padding: 28px 0 60px;
+      align-items: start;
+    }
+
+    /* ── SECTION CARDS (match index card style) ── */
+    .sec-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .sec-card-head {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 700;
+      color: var(--ink); letter-spacing: 0.2px;
+      background: #fafafa;
+    }
+    .sec-card-head .step-badge {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--blue); color: #fff;
+      font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .sec-card-body { padding: 16px 18px; }
+
+    /* ── Template selector ── */
+    .tpl-grid { display: flex; gap: 10px; flex-wrap: wrap; }
+    .tpl-label {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 16px; border: 1.5px solid var(--line);
+      border-radius: 8px; cursor: pointer; font-size: 13px;
+      transition: all .15s; background: var(--white);
+      font-weight: 500; color: var(--ink2);
+    }
+    .tpl-label:has(input:checked) {
+      border-color: var(--blue); background: var(--blue-light);
+      color: var(--blue); font-weight: 600;
+    }
+    .tpl-label input { display: none; }
+    .tpl-label .tpl-check {
+      width: 16px; height: 16px; border-radius: 50%;
+      border: 1.5px solid var(--muted);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: all .15s;
+    }
+    .tpl-label:has(input:checked) .tpl-check {
+      background: var(--blue); border-color: var(--blue);
+    }
+
+    /* ── Texture pills ── */
+    .texture-pill {
+      display: inline-flex; align-items: center;
+      padding: 6px 14px; border: 1.5px solid var(--line);
+      border-radius: 20px; margin: 4px 6px 4px 0;
+      cursor: pointer; font-size: 12px; font-weight: 500;
+      background: var(--white); transition: all .15s;
+      color: var(--ink2);
+    }
+    .texture-pill:has(input:checked) {
+      border-color: var(--blue); background: var(--blue-light);
+      color: var(--blue); font-weight: 600;
+    }
+    .texture-pill input { display: none; }
+
+    /* ── Logo tiles (pill style, same as texture) ── */
+    .logo-tiles { display: flex; gap: 10px; flex-wrap: wrap; }
+    .logo-tile {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 6px 14px; border: 1.5px solid var(--line);
+      border-radius: 20px; margin: 4px 0;
+      cursor: pointer; font-size: 12px; font-weight: 500;
+      background: var(--white); transition: all .15s;
+      color: var(--ink2);
+    }
+    .logo-tile:has(input:checked) {
+      border-color: var(--blue); background: var(--blue-light);
+      color: var(--blue); font-weight: 600;
+    }
+    .logo-tile input { display: none; }
+
+    /* ── Optional fields ── */
+    .opt-field-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin: 4px 14px 4px 0; font-weight: normal;
+      cursor: pointer; font-size: 13px; color: var(--ink2);
+    }
+    .opt-field-label input { accent-color: var(--blue); }
+
+    /* ── Data input fields ── */
+    .data-field-group { margin-bottom: 12px; }
+    .data-field-group label {
+      display: block; font-size: 10px; font-weight: 700;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 4px; letter-spacing: 0.5px;
+    }
+    .data-field-group input[type=text] {
+      width: 100%; padding: 8px 10px;
+      border: 1.5px solid var(--line); border-radius: 6px;
+      font-size: 13px; color: var(--ink);
+      transition: border-color .15s, box-shadow .15s;
+      background: var(--white);
+    }
+    .data-field-group input[type=text]:focus {
+      border-color: var(--blue); outline: none;
+      box-shadow: 0 0 0 3px rgba(26,86,219,.1);
+    }
+
+    /* ── Action buttons ── */
+    .action-bar {
+      display: flex; gap: 10px; align-items: center;
+      padding: 16px 18px; background: #fafafa;
+      border-top: 1px solid var(--line);
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+    .btn-reset {
+      padding: 9px 18px; border: 1.5px solid var(--line);
+      border-radius: 7px; background: var(--white);
+      color: var(--ink2); font-size: 13px; font-weight: 500;
+      cursor: pointer; transition: all .15s;
+    }
+    .btn-reset:hover { border-color: var(--muted); color: var(--ink); }
+    .btn-download {
+      padding: 9px 22px; border: none;
+      border-radius: 7px; background: var(--blue);
+      color: #fff; font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: all .15s;
+      box-shadow: 0 2px 8px rgba(26,86,219,.25);
+    }
+    .btn-download:hover { background: var(--blue-dark); }
+
+    /* ── PREVIEW COLUMN ── */
+    .preview-col {
+      position: sticky; top: 76px;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .preview-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--radius); box-shadow: var(--shadow-md);
+      width: 100%; padding: 16px;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .preview-card-head {
+      width: 100%;
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--muted); margin-bottom: 14px;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 4px;
+    }
+
+    #template-container {
+      display: block;
+      transform: rotate(-0.3deg);
+      filter: drop-shadow(0 8px 28px rgba(0,0,0,.18));
+      zoom: 70%;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: var(--ink); color: #9ca3af;
+      padding: 40px 0 24px; margin-top: 0;
+    }
+    .footer-inner { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+    .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-bottom: 32px; }
+    .footer-col-title { color: #fff; font-size: 13px; font-weight: 700; margin-bottom: 12px; }
+    .footer-col a { display: block; font-size: 13px; color: #9ca3af; margin-bottom: 6px; }
+    .footer-col a:hover { color: #fff; text-decoration: none; }
+    .footer-bottom { border-top: 1px solid #374151; padding-top: 20px; font-size: 12px; text-align: center; }
+    .footer-logo { font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .footer-logo span { color: var(--blue); }
+
+    @media(max-width:900px){
+      .gen-layout { grid-template-columns: 1fr; }
+      .preview-col { position: static; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════ NAV (matches index.html exactly) ══════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Fuel<span>Bill</span>.in</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/generator" class="active">Generator</a></li>
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/generator" class="nav-cta">Generate Bill →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══════ PAGE HEADER ══════ -->
+<div class="page-header-strip">
+  <div class="container-main">
+    <div class="breadcrumb-bar">
+      <a href="/">Home</a>
+      <span>›</span>
+      <span>Fuel Bill Generator</span>
+    </div>
+    <h1>Free Fuel Bill Generator</h1>
+    <p>Fill in your details and generate a realistic petrol or diesel receipt instantly — no signup required.</p>
+  </div>
+</div>
+
+<!-- ══════ MAIN CONTENT ══════ -->
+<div class="container-main">
+<div class="gen-layout">
+
+  <!-- ═══════ LEFT: Controls ═══════ -->
+  <div>
+
+    <!-- Step 1: Template -->
+    <div class="sec-card">
+      <div class="sec-card-head">
+        <div class="step-badge">1</div>
+        Select Your Template
+      </div>
+      <div class="sec-card-body">
+        <div class="tpl-grid">
+          <label class="tpl-label">
+            <div class="tpl-check"></div>
+            <input type="radio" name="template" value="0" checked />
+            Template 1 <small style="color:var(--muted);font-weight:400;font-size:12px;">Thermal FCC Receipt</small>
+          </label>
+          <label class="tpl-label">
+            <div class="tpl-check"></div>
+            <input type="radio" name="template" value="1" />
+            Template 2 <small style="color:var(--muted);font-weight:400;font-size:12px;">Card Swipe Receipt</small>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Paper Texture -->
+    <div class="sec-card" id="section-paper-texture">
+      <div class="sec-card-head"><div class="step-badge">2</div>Select Paper Texture</div>
+      <div class="sec-card-body"></div>
+    </div>
+
+    <!-- Step 3: Pump Logo -->
+    <div class="sec-card" id="section-pump-logo">
+      <div class="sec-card-head"><div class="step-badge">3</div>Select Pump Logo</div>
+      <div class="sec-card-body"></div>
+    </div>
+
+    <!-- Step 4: Optional Fields -->
+    <div class="sec-card" id="section-optional-fields">
+      <div class="sec-card-head"><div class="step-badge">4</div>Optional Fields</div>
+      <div class="sec-card-body"></div>
+    </div>
+
+    <!-- Step 5: Enter Data -->
+    <div class="sec-card" id="section-data">
+      <div class="sec-card-head"><div class="step-badge">5</div>Enter Your Details</div>
+      <div class="sec-card-body">
+        <div class="row"></div>
+      </div>
+    </div>
+
+    <!-- Action bar -->
+    <div class="sec-card">
+      <div class="action-bar">
+        <button type="button" class="btn-reset" id="loadDefaultData">↺ Reset</button>
+        <button type="button" class="btn-download" id="downloadButton">⬇ Download PNG</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════ RIGHT: Preview ═══════ -->
+  <div class="preview-col">
+    <div class="preview-card">
+      <div class="preview-card-head">
+        <span>Live Preview</span>
+        <span style="font-size:10px;color:var(--green);font-weight:500;text-transform:none;letter-spacing:0;">● Updates instantly</span>
+      </div>
+      <div id="template-container"></div>
+    </div>
+
+    <!-- Trust badge under preview -->
+    <div style="margin-top:14px;text-align:center;">
+      <div style="font-size:11px;color:var(--muted);line-height:1.7;">
+        ✓ Free &nbsp;·&nbsp; ✓ No Watermark &nbsp;·&nbsp; ✓ No Signup<br/>
+        ✓ Indian Oil, HP & Bharat Petroleum logos<br/>
+        ✓ High resolution PNG download
+      </div>
+    </div>
+  </div>
+
+</div><!-- /gen-layout -->
+
+<!-- ══════ SEO CONTENT SECTION ══════ -->
+<div style="background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:32px 36px;margin-bottom:40px;">
+  <h2 style="font-size:20px;font-weight:800;color:var(--ink);margin-bottom:6px;">How to Generate a Fuel Bill Online</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Follow these simple steps to create your petrol or diesel receipt in seconds.</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+    <div style="display:flex;gap:12px;align-items:flex-start;">
+      <div style="width:32px;height:32px;border-radius:50%;background:var(--blue-light);color:var(--blue);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+      <div><div style="font-weight:700;font-size:13px;margin-bottom:3px;">Choose Template</div><div style="font-size:12px;color:var(--muted);">Pick between thermal FCC receipt or card swipe receipt style</div></div>
+    </div>
+    <div style="display:flex;gap:12px;align-items:flex-start;">
+      <div style="width:32px;height:32px;border-radius:50%;background:var(--blue-light);color:var(--blue);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+      <div><div style="font-weight:700;font-size:13px;margin-bottom:3px;">Fill Your Details</div><div style="font-size:12px;color:var(--muted);">Enter station name, date, amount, vehicle number and more</div></div>
+    </div>
+    <div style="display:flex;gap:12px;align-items:flex-start;">
+      <div style="width:32px;height:32px;border-radius:50%;background:var(--blue-light);color:var(--blue);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+      <div><div style="font-weight:700;font-size:13px;margin-bottom:3px;">Download Instantly</div><div style="font-size:12px;color:var(--muted);">Get a high-resolution PNG receipt with no watermark, free</div></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container-main -->
+
+<!-- ══════ FOOTER (matches index.html exactly) ══════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">Fuel<span>Bill</span>.in</div>
+        <p style="font-size:13px;margin-bottom:0;">India's free fuel bill generator. Create realistic petrol and diesel receipts instantly.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Quick Links</div>
+        <a href="/">Home</a>
+        <a href="/generator">Generator</a>
+        <a href="/#how-it-works">How It Works</a>
+        <a href="/#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Supported Logos</div>
+        <a href="/generator">Indian Oil Bill Generator</a>
+        <a href="/generator">HP Petrol Bill Generator</a>
+        <a href="/generator">Bharat Petroleum Bill Generator</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 FuelBill.in — Free Petrol & Diesel Receipt Generator India. For educational purposes only.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="assets/js/common.js"></script>
+<script src="templates/AbstractTemplate.js"></script>
+<script src="templates/template-1/Template1.js"></script>
+<script src="templates/template-2/Template2.js"></script>
+
+<script>
+  var templates = [
+    new Template1('template-container'),
+    new Template2('template-container'),
+  ];
+
+  $(document).ready(async function () {
+    await onInit();
+    $('input[name="template"]').on('change', async function () {
+      await onTemplateSelected();
+    });
+    $('#loadDefaultData').on('click', async function () { await onTemplateSelected(); });
+    $('#downloadButton').on('click', function () { downloadReceipt(); });
+  });
+</script>
+<script async src="https://cdn.splitbee.io/sb.js"></script>
+</body>
+</html>
