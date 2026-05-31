@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ═══ PRIMARY SEO ═══ -->
+  <title>Free Fuel Bill Generator Online | Petrol & Diesel Receipt Maker India</title>
+  <meta name="description" content="Generate petrol and diesel bills instantly with India's #1 free fuel bill generator. Create realistic PoS thermal receipts with Indian Oil, HP & Bharat Petroleum logos. No signup — download instantly." />
+  <meta name="keywords" content="free fuel bill generator, petrol bill generator, diesel bill generator, online fuel receipt generator, fuel invoice generator free, petrol pump bill generator India, fuel bill maker online, download fuel bill PDF, generate petrol receipt online, Indian oil bill generator, HP petrol bill generator, Bharat Petroleum bill generator, fuel expense receipt generator, create fuel invoice instantly, petrol diesel bill template, fuel bill for reimbursement, fuel receipt maker free, fuel bill generator India, GST fuel bill, thermal receipt generator, PoS receipt generator, petrol bill maker free, diesel receipt maker, fuel slip generator, fuel bill without watermark, fuel bill for office reimbursement, petrol bill for travel claim, fuelbill.in" />
+  <link rel="canonical" href="https://fuelbill.in/" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="FuelBill.in" />
+
+  <!-- ═══ OPEN GRAPH ═══ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://fuelbill.in/" />
+  <meta property="og:title" content="Free Fuel Bill Generator Online | Petrol & Diesel Receipt Maker India" />
+  <meta property="og:description" content="Create realistic petrol & diesel receipts in seconds. Indian Oil, HP, Bharat Petroleum templates. No signup. Instant download. 100% free." />
+  <meta property="og:site_name" content="FuelBill.in" />
+
+  <!-- ═══ TWITTER CARD ═══ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free Fuel Bill Generator | FuelBill.in" />
+  <meta name="twitter:description" content="Generate petrol & diesel bills instantly. Free, realistic, downloadable. Indian Oil, HP & Bharat Petroleum logos." />
+
+  <!-- ═══ STRUCTURED DATA — WebApplication ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free Fuel Bill Generator",
+    "url": "https://fuelbill.in",
+    "description": "Free online tool to generate petrol and diesel bills for reimbursement. Create realistic thermal PoS receipts with Indian Oil, HP and Bharat Petroleum logos.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+    "inLanguage": "en-IN",
+    "featureList": ["Indian Oil template", "HP template", "Bharat Petroleum template", "GST support", "PNG download", "Mobile friendly"]
+  }
+  </script>
+
+  <!-- ═══ FAQ SCHEMA ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is this fuel bill generator completely free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, FuelBill.in is 100% free. You can generate, preview and download petrol or diesel receipts at no cost, with no signup required." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I download the petrol bill as a PDF or image?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Bills are downloaded as high-resolution PNG images, which can easily be printed or converted to PDF using any free tool." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the generated fuel bill valid for office reimbursement?",
+        "acceptedAnswer": { "@type": "Answer", "text": "This tool is for educational and personal record-keeping purposes. For official reimbursements, always use actual receipts from the petrol pump." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which petrol pump logos are supported?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Currently Indian Oil, Hindustan Petroleum (HP), and Bharat Petroleum (BPCL) logos are available." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I add GST number to the fuel bill?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. The optional fields section lets you add GSTIN, CST, LST and VAT numbers to your receipt." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work on mobile phones?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, the fuel bill generator is fully responsive and works on all smartphones and tablets." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ═══════════════════════════════════════
+       RESET & TOKENS
+    ═══════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #0f1923;
+      --ink2:      #374151;
+      --muted:     #6b7280;
+      --line:      #e5e7eb;
+      --bg:        #f7f8fa;
+      --white:     #ffffff;
+      --blue:      #1a56db;
+      --blue-dark: #1648c0;
+      --blue-light:#eef3ff;
+      --green:     #16a34a;
+      --amber:     #d97706;
+      --radius:    10px;
+      --shadow-sm: 0 1px 4px rgba(0,0,0,.06);
+      --shadow-md: 0 4px 20px rgba(0,0,0,.08);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ═══════════════════════════════════════
+       NAV
+    ═══════════════════════════════════════ */
+    .nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.4px;
+    }
+    .nav-logo span { color: var(--blue); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink2);
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background .15s;
+    }
+    .nav-links a:hover { background: var(--blue-light); text-decoration: none; color: var(--blue); }
+    .nav-cta {
+      background: var(--blue) !important;
+      color: var(--white) !important;
+      font-weight: 600 !important;
+      padding: 7px 16px !important;
+    }
+    .nav-cta:hover { background: var(--blue-dark) !important; }
+
+    /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
+    .hero {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      padding: 72px 0 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 20% 40%, rgba(26,86,219,.05) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(22,163,74,.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+    }
+    .hero-badge::before { content: '⚡'; }
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 52px);
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--blue);
+    }
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--ink2);
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(26,86,219,.35);
+      transition: background .15s, transform .1s, box-shadow .15s;
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      background: var(--blue-dark);
+      box-shadow: 0 6px 20px rgba(26,86,219,.45);
+      text-decoration: none;
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      color: var(--ink2);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 22px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--line);
+      cursor: pointer;
+      transition: border-color .15s, color .15s;
+      text-decoration: none;
+    }
+    .btn-secondary:hover { border-color: var(--blue); color: var(--blue); text-decoration: none; }
+    .hero-trust {
+      font-size: 12.5px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-trust span::before { content: '✓ '; color: var(--green); font-weight: 700; }
+
+    /* Receipt mockup strip */
+    .hero-visual {
+      margin-top: 44px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .receipt-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px 16px;
+      width: 150px;
+      box-shadow: var(--shadow-md);
+      font-size: 9px;
+      font-family: 'Courier New', monospace;
+      color: var(--ink2);
+      line-height: 1.8;
+      text-align: center;
+      position: relative;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .receipt-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .receipt-card .rc-logo {
+      width: 42px;
+      height: 28px;
+      margin: 0 auto 8px;
+      background: var(--line);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      color: var(--muted);
+      font-weight: 700;
+      font-family: inherit;
+    }
+    .receipt-card .rc-name {
+      font-weight: 700;
+      font-size: 8px;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+    .receipt-card .rc-line {
+      border-top: 1px dashed #ccc;
+      margin: 5px 0;
+    }
+    .receipt-card .rc-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 8px;
+    }
+    .receipt-card .rc-total {
+      font-weight: 700;
+      font-size: 10px;
+      margin-top: 6px;
+      color: var(--ink);
+    }
+    .receipt-card .rc-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 8px;
+      font-weight: 700;
+      padding: 3px 7px;
+      border-radius: 10px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* ═══════════════════════════════════════
+       LOGOS BAR
+    ═══════════════════════════════════════ */
+    .logos-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      padding: 20px 0;
+    }
+    .logos-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .logos-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      margin-right: 8px;
+    }
+    .logo-pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 5px 14px 5px 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink2);
+    }
+    .logo-pill .dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .dot-ioc { background: #cc2222; }
+    .dot-hp  { background: #003f8a; }
+    .dot-bp  { background: #e8b800; color: #333; }
+
+    /* ═══════════════════════════════════════
+       SECTION UTILITIES
+    ═══════════════════════════════════════ */
+    .section { padding: 64px 0; }
+    .section-alt { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(22px, 3.5vw, 34px);
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--ink2);
+      max-width: 520px;
+      line-height: 1.65;
+    }
+    .section-header { margin-bottom: 44px; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-sub { margin: 0 auto; }
+
+    /* ═══════════════════════════════════════
+       FEATURES
+    ═══════════════════════════════════════ */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      transition: box-shadow .2s, border-color .2s, transform .2s;
+    }
+    .feature-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: #c7d9f8;
+      transform: translateY(-2px);
+    }
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--blue-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+    .feature-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .feature-card p {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════
+       HOW IT WORKS
+    ═══════════════════════════════════════ */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 24px;
+      counter-reset: steps;
+      position: relative;
+    }
+    .step-card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 22px;
+      position: relative;
+      text-align: center;
+      counter-increment: steps;
+    }
+    .step-card::before {
+      content: counter(steps);
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--blue);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(26,86,219,.3);
+    }
+    .step-icon { font-size: 28px; margin-bottom: 12px; }
+    .step-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 7px;
+    }
+    .step-card p {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════
+       USE CASES
+    ═══════════════════════════════════════ */
+    .usecases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 18px;
+    }
+    .usecase-card {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px 18px;
+      transition: box-shadow .2s;
+    }
+    .usecase-card:hover { box-shadow: var(--shadow-md); }
+    .usecase-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .usecase-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .usecase-card p {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ═══════════════════════════════════════
+       FAQ
+    ═══════════════════════════════════════ */
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      gap: 12px;
+      user-select: none;
+      transition: background .15s;
+    }
+    .faq-q:hover { background: var(--bg); }
+    .faq-toggle {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: var(--blue-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--blue);
+      font-weight: 700;
+      transition: transform .25s;
+    }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); }
+    .faq-a {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease, padding .3s;
+      font-size: 13.5px;
+      color: var(--ink2);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding: 0 20px 18px; }
+
+    /* ═══════════════════════════════════════
+       CTA BANNER
+    ═══════════════════════════════════════ */
+    .cta-banner {
+      background: linear-gradient(135deg, #1a56db 0%, #1e3a8a 100%);
+      border-radius: 16px;
+      padding: 52px 32px;
+      text-align: center;
+      margin: 0 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .cta-banner h2 {
+      font-size: clamp(22px, 4vw, 36px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .cta-banner p {
+      font-size: 15px;
+      color: rgba(255,255,255,.8);
+      margin-bottom: 28px;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: var(--blue);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 13px 30px;
+      border-radius: var(--radius);
+      transition: transform .15s, box-shadow .15s;
+      text-decoration: none;
+      position: relative;
+      box-shadow: 0 4px 16px rgba(0,0,0,.2);
+    }
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+      text-decoration: none;
+      color: var(--blue-dark);
+    }
+    .cta-trust {
+      margin-top: 18px;
+      font-size: 12px;
+      color: rgba(255,255,255,.6);
+      position: relative;
+    }
+    .cta-trust span::before { content: '• '; }
+    .cta-trust span:first-child::before { content: ''; }
+
+    /* ═══════════════════════════════════════
+       SEO CONTENT
+    ═══════════════════════════════════════ */
+    .seo-content {
+      font-size: 14px;
+      color: var(--ink2);
+      line-height: 1.8;
+      max-width: 800px;
+    }
+    .seo-content h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 28px 0 10px;
+    }
+    .seo-content h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 20px 0 8px;
+    }
+    .seo-content p { margin-bottom: 12px; }
+    .seo-content ul { padding-left: 20px; margin-bottom: 12px; }
+    .seo-content li { margin-bottom: 5px; }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,.7);
+      padding: 44px 0 28px;
+      font-size: 13px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 36px;
+    }
+    .footer-brand .nav-logo { color: #fff; font-size: 16px; margin-bottom: 10px; }
+    .footer-brand p { font-size: 12.5px; line-height: 1.7; max-width: 280px; }
+    footer h4 {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: rgba(255,255,255,.9);
+      margin-bottom: 14px;
+    }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 8px; }
+    footer a { color: rgba(255,255,255,.6); font-size: 13px; }
+    footer a:hover { color: #fff; text-decoration: none; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer-bottom p { font-size: 12px; }
+    .disclaimer {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 11.5px;
+      color: rgba(255,255,255,.45);
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .section { padding: 44px 0; }
+      .hero { padding: 44px 0 36px; }
+      .features-grid,
+      .steps-grid,
+      .usecases-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+      .hero-visual .receipt-card:nth-child(n+4) { display: none; }
+      .cta-banner { margin: 0; border-radius: 0; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 480px) {
+      .features-grid,
+      .steps-grid { grid-template-columns: 1fr; }
+      .usecases-grid { grid-template-columns: 1fr; }
+      .hero-cta-group { flex-direction: column; align-items: stretch; text-align: center; }
+      .btn-primary, .btn-secondary { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════ NAV ═══════ -->
+<nav class="nav" aria-label="Main navigation">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo">Fuel<span>Bill</span>.in</a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="/generator" class="nav-cta">Generate Bill →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="container">
+    <div class="hero-badge">Free Online Tool</div>
+    <h1 id="hero-heading">
+      Free <em>Fuel Bill</em><br />Generator Online
+    </h1>
+    <p class="hero-sub">
+      Create realistic petrol and diesel receipts instantly. Choose from Indian Oil, HP, and Bharat Petroleum templates — no signup needed.
+    </p>
+    <div class="hero-cta-group">
+      <a href="/generator" class="btn-primary">
+        ⚡ Generate Fuel Bill Now
+      </a>
+      <a href="#how-it-works" class="btn-secondary">
+        See how it works
+      </a>
+    </div>
+    <div class="hero-trust">
+      <span>No signup required</span>
+      <span>Instant download</span>
+      <span>100% free</span>
+      <span>Works on mobile</span>
+    </div>
+
+    <!-- Receipt mockup cards -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="receipt-card">
+        <div class="rc-badge">Template 1</div>
+        <div class="rc-logo">IOC</div>
+        <div class="rc-name">THERMAL RECEIPT</div>
+        <div class="rc-line"></div>
+        <div class="rc-row"><span>Product</span><span>Petrol</span></div>
+        <div class="rc-row"><span>Rate</span><span>101.94</span></div>
+        <div class="rc-row"><span>Volume</span><span>9.81 L</span></div>
+        <div class="rc-line"></div>
+        <div class="rc-total">₹ 1000.00</div>
+        <div class="rc-line"></div>
+        <div style="font-size:7px;opacity:.5;margin-top:4px">*** Thank You ***</div>
+      </div>
+      <div class="receipt-card">
+        <div class="rc-badge" style="background:var(--green)">Template 2</div>
+        <div class="rc-logo">HP</div>
+        <div class="rc-name">CARD PAYMENT</div>
+        <div class="rc-line"></div>
+        <div class="rc-row"><span>Card</span><span>****4112</span></div>
+        <div class="rc-row"><span>Type</span><span>VISA</span></div>
+        <div class="rc-row"><span>Fuel</span><span>Petrol</span></div>
+        <div class="rc-line"></div>
+        <div class="rc-total">₹ 3450.00</div>
+        <div class="rc-line"></div>
+        <div style="font-size:7px;opacity:.5;margin-top:4px">APPROVED</div>
+      </div>
+      <div class="receipt-card">
+        <div class="rc-logo">BP</div>
+        <div class="rc-name">BHARAT PETROLEUM</div>
+        <div class="rc-line"></div>
+        <div class="rc-row"><span>Date</span><span>18/11/25</span></div>
+        <div class="rc-row"><span>Volume</span><span>25.0 L</span></div>
+        <div class="rc-row"><span>Diesel</span><span>92.50</span></div>
+        <div class="rc-line"></div>
+        <div class="rc-total">₹ 2312.50</div>
+        <div class="rc-line"></div>
+        <div style="font-size:7px;opacity:.5;margin-top:4px">GST: 29ABCDE1234</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ LOGOS BAR ═══════ -->
+<div class="logos-bar">
+  <div class="container">
+    <div class="logos-inner">
+      <span class="logos-label">Supported</span>
+      <div class="logo-pill"><div class="dot dot-ioc">IOC</div> Indian Oil</div>
+      <div class="logo-pill"><div class="dot dot-hp">HP</div> Hindustan Petroleum</div>
+      <div class="logo-pill"><div class="dot dot-bp">BP</div> Bharat Petroleum</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ FEATURES ═══════ -->
+<section class="section" id="features" aria-labelledby="features-heading">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-label">Features</span>
+      <h2 class="section-title" id="features-heading">Everything you need in a fuel bill generator</h2>
+      <p class="section-sub">From thermal receipts to card-payment slips — our petrol bill maker covers every format used at Indian fuel pumps.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🧾</div>
+        <h3>2 Realistic Templates</h3>
+        <p>Thermal receipt &amp; card payment styles that match actual Indian petrol pump printouts.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏢</div>
+        <h3>3 Pump Logos</h3>
+        <p>Indian Oil, HP (Hindustan Petroleum) and Bharat Petroleum logos included out of the box.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>GST Ready</h3>
+        <p>Add GSTIN, CST, LST and VAT numbers for a complete, tax-compliant fuel invoice format.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⬇️</div>
+        <h3>Instant PNG Download</h3>
+        <p>High-resolution download — print it, email it, or attach to your expense claim form.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3>Custom Date & Amount</h3>
+        <p>Set any date, time, rate per litre, volume and total amount to match your actual fill-up.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Mobile Friendly</h3>
+        <p>Works perfectly on smartphones and tablets — generate a fuel receipt on the go.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚗</div>
+        <h3>Vehicle Number Field</h3>
+        <p>Add your vehicle registration number exactly as it appears on pump receipts.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>No Signup Needed</h3>
+        <p>Open the tool, fill in details, download. Zero accounts, zero data stored, zero ads.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ HOW IT WORKS ═══════ -->
+<section class="section section-alt" id="how-it-works" aria-labelledby="hiw-heading">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-label">How It Works</span>
+      <h2 class="section-title" id="hiw-heading">Generate a petrol bill in 4 simple steps</h2>
+      <p class="section-sub">Our online fuel receipt generator is designed to be the fastest way to create a realistic pump receipt.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-icon">🏷️</div>
+        <h3>Choose Template</h3>
+        <p>Pick between Thermal Receipt or Card Payment style, then select paper texture and pump logo.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">✏️</div>
+        <h3>Enter Fuel Details</h3>
+        <p>Fill in date, time, rate per litre, volume, total amount, vehicle number and other fields.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">👁️</div>
+        <h3>Preview Instantly</h3>
+        <p>Your receipt updates in real-time as you type — no need to click any generate button.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">⬇️</div>
+        <h3>Download &amp; Use</h3>
+        <p>Click Download Receipt to save as a high-resolution PNG image, ready to submit or print.</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top: 36px;">
+      <a href="/generator" class="btn-primary">Try the Generator →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ USE CASES ═══════ -->
+<section class="section" id="use-cases" aria-labelledby="uc-heading">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Use Cases</span>
+      <h2 class="section-title" id="uc-heading">Who uses this fuel bill generator?</h2>
+      <p class="section-sub">Thousands of people across India use FuelBill.in to create petrol and diesel receipts for a variety of purposes.</p>
+    </div>
+    <div class="usecases-grid">
+      <div class="usecase-card">
+        <div class="usecase-icon">💼</div>
+        <div>
+          <h3>Office Reimbursement</h3>
+          <p>Employees submit fuel bills for travel reimbursement. Generate a PoS-style receipt that matches the exact format companies expect.</p>
+        </div>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">✈️</div>
+        <div>
+          <h3>Travel Expense Claims</h3>
+          <p>Business travellers and sales teams need fuel receipts for daily travel allowances. Create and download instantly.</p>
+        </div>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">📊</div>
+        <div>
+          <h3>Personal Record Keeping</h3>
+          <p>Freelancers and self-employed professionals use fuel receipts to maintain their vehicle expense records for ITR filing.</p>
+        </div>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">🎓</div>
+        <div>
+          <h3>Education & Training</h3>
+          <p>Students learning billing systems, designers studying receipt formats, or trainers demonstrating PoS layouts.</p>
+        </div>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">🏗️</div>
+        <div>
+          <h3>Fleet Management</h3>
+          <p>Logistics and construction companies managing multiple vehicles need standardised fuel vouchers for accounting purposes.</p>
+        </div>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">🖨️</div>
+        <div>
+          <h3>Template Design Reference</h3>
+          <p>Developers and UI designers use the tool to understand Indian petrol pump receipt formats before building custom billing software.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FAQ ═══════ -->
+<section class="section section-alt" id="faq" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title" id="faq-heading">Frequently Asked Questions</h2>
+      <p class="section-sub">Everything you need to know about our free petrol bill generator.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Is this fuel bill generator completely free?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Yes, FuelBill.in is 100% free to use. You can generate, preview and download as many petrol or diesel receipts as you need — no account, no subscription, no hidden charges.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Can I download the petrol bill as a PDF?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Bills are downloaded as high-resolution PNG images. You can easily convert them to PDF using any free online tool, or directly print the PNG from your browser using <strong>File → Print</strong> and saving as PDF.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Is the generated fuel bill valid for office reimbursement?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">This tool is designed for educational, training and personal record-keeping purposes. For official employer reimbursements, we recommend using actual receipts from the petrol pump. Always follow your company's expense policy.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Which petrol pump logos are available?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Currently Indian Oil (IOC), Hindustan Petroleum (HP) and Bharat Petroleum (BPCL) logos are included. These cover the three major public sector oil marketing companies in India.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Can I add my GSTIN or VAT number?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Yes. The Optional Fields section lets you toggle GSTIN, CST No, LST No, and VAT No on or off. When enabled, you can enter the corresponding values in the data fields below.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Does the fuel bill generator work on mobile phones?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Yes, the generator is fully responsive and works on all smartphones and tablets. You can create and download a petrol receipt directly from your phone without needing a desktop.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Is there a watermark on downloaded receipts?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">No watermark is added to your downloaded receipt. The output is a clean, realistic thermal-style receipt image without any branding from FuelBill.in overlaid on it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA BANNER ═══════ -->
+<section class="section" aria-labelledby="cta-heading">
+  <div class="cta-banner">
+    <h2 id="cta-heading">Start Generating Your Fuel Bill</h2>
+    <p>Join thousands of users creating petrol and diesel receipts in seconds. Free, instant, no signup required.</p>
+    <a href="/generator" class="btn-white">⚡ Open Fuel Bill Generator</a>
+    <div class="cta-trust">
+      <span>Indian Oil</span>
+      <span>HP</span>
+      <span>Bharat Petroleum</span>
+      <span>GST Support</span>
+      <span>PNG Download</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SEO CONTENT ═══════ -->
+<section class="section">
+  <div class="container">
+    <div class="seo-content">
+      <h2>What is a Fuel Bill Generator?</h2>
+      <p>A <strong>fuel bill generator</strong> is a free online tool that creates realistic petrol pump receipts and diesel bills in seconds. Whether you need a <strong>petrol bill for office reimbursement</strong>, a <strong>diesel receipt for vehicle expense claims</strong>, or simply want to generate a PoS-style thermal receipt for record-keeping, FuelBill.in delivers a professional output instantly — with no registration.</p>
+
+      <h2>How to Generate a Fuel Bill Online</h2>
+      <p>Using our <strong>online petrol receipt generator</strong> is straightforward. Select your preferred template (thermal or card payment), choose a pump logo, optionally enable GST fields, then fill in the fuel details like amount, volume, rate, date and vehicle number. The live preview updates as you type — hit Download Receipt when ready.</p>
+
+      <h3>Fuel Bill for Reimbursement</h3>
+      <p>Many companies in India require employees to submit a <strong>fuel bill for reimbursement</strong>. Our generator creates receipts in the standard Indian petrol pump format — with receipt number, FIP number, nozzle number, rate per litre, volume dispensed, total amount, and date. The output closely matches what real PoS terminals print.</p>
+
+      <h3>Indian Oil, HP & Bharat Petroleum Templates</h3>
+      <p>As the three largest fuel retailers in India, <strong>Indian Oil (IOC)</strong>, <strong>Hindustan Petroleum (HP)</strong> and <strong>Bharat Petroleum (BPCL)</strong> templates are all supported. Simply select your logo from the panel and the receipt will display the corresponding company branding in a greyscale thermal-print style.</p>
+
+      <h3>Diesel Bill Generator</h3>
+      <p>The tool works equally well as a <strong>diesel bill generator</strong>. Just change the Product field from "Petrol" to "Diesel" (or "HSD" for High Speed Diesel) and update the rate per litre accordingly. All other fields remain the same.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">Fuel<span style="color:#60a5fa">Bill</span>.in</div>
+        <p>India's free online fuel bill generator. Create petrol and diesel receipts instantly — Indian Oil, HP, Bharat Petroleum templates, GST-ready, no signup required.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/generator">Fuel Bill Generator</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Templates</h4>
+        <ul>
+          <li><a href="/generator">Indian Oil Bill</a></li>
+          <li><a href="/generator">HP Petrol Bill</a></li>
+          <li><a href="/generator">Bharat Petroleum Bill</a></li>
+          <li><a href="/generator">Card Payment Receipt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      ⚠️ <strong>Disclaimer:</strong> This tool is for educational and personal use only. Bills generated here are for practice, training, record-keeping and reference purposes. They are not official documents. Always use actual receipts from petrol pumps for legal or official submissions.
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 FuelBill.in · Free Petrol &amp; Diesel Bill Generator India</p>
+      <p style="color:rgba(255,255,255,.35); font-size:11px">fuel bill generator · petrol bill generator · diesel receipt maker</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
