@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: fuel-receipt-generator
-    env: node
-    buildCommand: cd mainfolder && npm install
-    startCommand: node mainfolder/server.js
-    envVars:
-      - key: NODE_ENV
-        value: production
