@@ -18,6 +18,11 @@ app.get('/generator', (req, res) => {
   res.sendFile(path.join(ROOT, 'generator.html'));
 });
 
+// Food Bill Generator
+app.get('/food-bill', (req, res) => {
+  res.sendFile(path.join(ROOT, 'food-generator.html'));
+});
+
 /* ── PNG Download ── */
 app.post('/api/download-receipt', async (req, res) => {
   const { html, width, height } = req.body;

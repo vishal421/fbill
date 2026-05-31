@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free Food Bill Generator | Restaurant Receipt Maker India | FuelBill.in</title>
+  <meta name="description" content="Generate realistic restaurant and food bills online for free. Add items, quantity, price. Auto-calculates CGST, SGST 2.5% each. Download instantly. No signup required." />
+  <meta name="keywords" content="food bill generator, restaurant bill generator, restaurant receipt maker, food invoice generator, food bill India, GST food bill, thermal receipt food, restaurant bill maker free" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="FuelBill.in" />
+  <link rel="canonical" href="https://fuelbill.in/food-bill" />
+  <meta property="og:title" content="Free Food Bill Generator | FuelBill.in" />
+  <meta property="og:description" content="Generate realistic restaurant food bills online. Add items, auto GST calculation. Free, no signup." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://fuelbill.in/food-bill" />
+  <meta name="twitter:card" content="summary" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/common.css" />
+
+  <style>
+    /* ══ DESIGN TOKENS (match fuelbill.in exactly) ══ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:        #0f1923;
+      --ink2:       #374151;
+      --muted:      #6b7280;
+      --line:       #e5e7eb;
+      --bg:         #f7f8fa;
+      --white:      #ffffff;
+      --blue:       #1a56db;
+      --blue-dark:  #1648c0;
+      --blue-light: #eef3ff;
+      --green:      #16a34a;
+      --amber:      #d97706;
+      --radius:     10px;
+      --shadow-sm:  0 1px 4px rgba(0,0,0,.06);
+      --shadow-md:  0 4px 20px rgba(0,0,0,.08);
+      --shadow-lg:  0 12px 40px rgba(0,0,0,.12);
+
+      /* Receipt palette */
+      --r-warm:     #faf7f2;
+      --r-ink:      #2c2c2c;
+      --r-faded:    #6b6355;
+      --r-border:   #c8bfaa;
+      --r-charcoal: #1a1a1a;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container-main { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+    /* ══ NAV ══ */
+    .nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      display: flex; align-items: center;
+      justify-content: space-between; height: 56px;
+      max-width: 1080px; margin: 0 auto; padding: 0 20px;
+    }
+    .nav-logo { font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: -0.4px; }
+    .nav-logo span { color: var(--blue); }
+    .nav-links { display: flex; align-items: center; gap: 6px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; font-weight: 500; color: var(--ink2);
+      padding: 6px 12px; border-radius: 6px; transition: background .15s;
+    }
+    .nav-links a:hover { background: var(--blue-light); text-decoration: none; color: var(--blue); }
+    .nav-links a.active { background: var(--blue-light); color: var(--blue); font-weight: 600; }
+    .nav-cta { background: var(--blue) !important; color: var(--white) !important; font-weight: 600 !important; padding: 7px 16px !important; border-radius: 6px; }
+    .nav-cta:hover { background: var(--blue-dark) !important; }
+
+    /* ══ PAGE HEADER STRIP ══ */
+    .page-header-strip {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      padding: 28px 0 24px;
+      text-align: center;
+    }
+    .page-header-strip h1 { font-size: 26px; font-weight: 800; color: var(--ink); letter-spacing: -0.5px; margin-bottom: 6px; }
+    .page-header-strip p { font-size: 14px; color: var(--muted); margin: 0; }
+    .breadcrumb-bar {
+      font-size: 12px; color: var(--muted);
+      margin-bottom: 10px; display: flex;
+      align-items: center; justify-content: center; gap: 6px;
+    }
+    .breadcrumb-bar a { color: var(--blue); }
+
+    /* ══ TWO-COLUMN LAYOUT ══ */
+    .gen-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 24px;
+      padding: 28px 0 60px;
+      align-items: start;
+    }
+
+    /* ══ SECTION CARDS ══ */
+    .sec-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .sec-card-head {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 700;
+      color: var(--ink); letter-spacing: 0.2px;
+      background: #fafafa;
+    }
+    .step-badge {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--blue); color: #fff;
+      font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .sec-card-body { padding: 16px 18px; }
+
+    /* ══ FORM FIELDS ══ */
+    .fields-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .fields-grid.full { grid-template-columns: 1fr; }
+    .fld { display: flex; flex-direction: column; gap: 4px; }
+    .fld label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .fld input[type=text],
+    .fld input[type=number],
+    .fld input[type=datetime-local] {
+      background: #f8faff;
+      border: 1.5px solid var(--line);
+      border-radius: 6px;
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 13px;
+      padding: 7px 10px;
+      outline: none;
+      transition: border-color .15s, box-shadow .15s;
+      width: 100%;
+    }
+    .fld input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(26,86,219,.1);
+      background: #fff;
+    }
+
+    /* ══ TEXTURE SELECTOR ══ */
+    .texture-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tex-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 12px;
+      border: 1.5px solid var(--line);
+      border-radius: 20px;
+      cursor: pointer; font-size: 12px; font-weight: 500;
+      background: var(--white); transition: all .15s;
+      color: var(--ink2);
+    }
+    .tex-pill:has(input:checked) {
+      border-color: var(--blue); background: var(--blue-light);
+      color: var(--blue); font-weight: 600;
+    }
+    .tex-pill input { display: none; }
+    .tex-swatch {
+      width: 28px; height: 20px;
+      border-radius: 3px; border: 1px solid rgba(0,0,0,.12);
+      object-fit: cover; flex-shrink: 0;
+      background: #e5e0d8;
+    }
+
+    /* ══ ITEMS TABLE ══ */
+    .items-col-heads {
+      display: grid;
+      grid-template-columns: 1fr 58px 78px 32px;
+      gap: 6px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+      text-transform: uppercase; color: var(--muted);
+      padding: 0 2px 6px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 6px;
+    }
+    .items-col-heads span:nth-child(2),
+    .items-col-heads span:nth-child(3) { text-align: right; }
+
+    .item-row {
+      display: grid;
+      grid-template-columns: 1fr 58px 78px 32px;
+      gap: 6px;
+      align-items: center;
+      margin-bottom: 6px;
+      animation: rowIn .2s ease;
+    }
+    @keyframes rowIn { from { opacity:0; transform:translateY(-5px); } to { opacity:1; transform:translateY(0); } }
+
+    .item-row input {
+      background: #f8faff;
+      border: 1.5px solid var(--line);
+      border-radius: 6px;
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 12px;
+      padding: 6px 8px;
+      outline: none;
+      width: 100%;
+      transition: border-color .15s;
+    }
+    .item-row input:focus { border-color: var(--blue); }
+    .item-row input[type=number] { text-align: right; }
+
+    .btn-del-row {
+      background: #fff0f0;
+      border: 1.5px solid #fca5a5;
+      color: #dc2626;
+      width: 32px; height: 32px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .15s;
+      flex-shrink: 0;
+    }
+    .btn-del-row:hover { background: #fee2e2; }
+
+    .btn-add-item {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 4px;
+      background: transparent;
+      border: 1.5px dashed var(--blue);
+      color: var(--blue);
+      font-family: inherit;
+      font-size: 12px; font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .btn-add-item:hover { background: var(--blue-light); border-style: solid; }
+
+    /* ══ SERVICE CHARGE TOGGLE ══ */
+    .svc-toggle {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--ink2); cursor: pointer;
+      padding: 10px 12px;
+      border: 1.5px solid var(--line);
+      border-radius: 8px;
+      transition: all .15s;
+    }
+    .svc-toggle:has(input:checked) {
+      border-color: var(--blue); background: var(--blue-light); color: var(--blue);
+    }
+    .svc-toggle input { accent-color: var(--blue); width: 15px; height: 15px; }
+
+    /* ══ ACTION BAR ══ */
+    .action-bar {
+      display: flex; gap: 10px; align-items: center;
+      padding: 16px 18px; background: #fafafa;
+      border-top: 1px solid var(--line);
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+    .btn-reset-sec {
+      padding: 9px 18px; border: 1.5px solid var(--line);
+      border-radius: 7px; background: var(--white);
+      color: var(--ink2); font-size: 13px; font-weight: 500;
+      cursor: pointer; transition: all .15s; font-family: inherit;
+    }
+    .btn-reset-sec:hover { border-color: var(--muted); color: var(--ink); }
+    .btn-dl {
+      flex: 1;
+      padding: 10px 22px; border: none;
+      border-radius: 7px; background: var(--blue);
+      color: #fff; font-size: 13px; font-weight: 700;
+      cursor: pointer; transition: all .15s;
+      box-shadow: 0 2px 8px rgba(26,86,219,.25);
+      font-family: inherit;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .btn-dl:hover { background: var(--blue-dark); }
+    .btn-dl:disabled { opacity: .6; cursor: wait; }
+
+    /* ══ PREVIEW COLUMN ══ */
+    .preview-col {
+      position: sticky; top: 76px;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .preview-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--radius); box-shadow: var(--shadow-md);
+      width: 100%; padding: 16px;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .preview-card-head {
+      width: 100%;
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--muted); margin-bottom: 14px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .preview-card-head .live-dot {
+      font-size: 10px; color: var(--green); font-weight: 500;
+      text-transform: none; letter-spacing: 0;
+    }
+
+    #receipt-container {
+      transform: rotate(-0.3deg);
+      filter: drop-shadow(0 8px 28px rgba(0,0,0,.18));
+      zoom: 78%;
+    }
+
+    /* ══ THERMAL RECEIPT ══ */
+    .receipt {
+      width: 320px;
+      background: var(--r-warm);
+      padding: 28px 24px 18px;
+      position: relative;
+      font-family: 'Courier Prime', monospace;
+      color: var(--r-ink);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+    }
+    /* Torn top */
+    .receipt::before {
+      content: '';
+      position: absolute;
+      top: -9px; left: 0; right: 0; height: 9px;
+      background: inherit;
+      clip-path: polygon(0% 100%, 2% 20%, 4% 80%, 6% 10%, 8% 70%, 10% 0%, 12% 60%, 14% 30%, 16% 90%, 18% 20%, 20% 75%, 22% 5%, 24% 65%, 26% 40%, 28% 80%, 30% 15%, 32% 70%, 34% 30%, 36% 90%, 38% 20%, 40% 60%, 42% 10%, 44% 75%, 46% 35%, 48% 85%, 50% 10%, 52% 65%, 54% 40%, 56% 90%, 58% 15%, 60% 70%, 62% 30%, 64% 80%, 66% 20%, 68% 75%, 70% 5%, 72% 60%, 74% 40%, 76% 85%, 78% 15%, 80% 70%, 82% 30%, 84% 80%, 86% 20%, 88% 65%, 90% 10%, 92% 75%, 94% 40%, 96% 85%, 98% 20%, 100% 50%, 100% 100%);
+    }
+    /* Torn bottom */
+    .receipt::after {
+      content: '';
+      position: absolute;
+      bottom: -9px; left: 0; right: 0; height: 9px;
+      background: inherit;
+      clip-path: polygon(0% 0%, 2% 80%, 4% 20%, 6% 90%, 8% 30%, 10% 100%, 12% 40%, 14% 70%, 16% 10%, 18% 80%, 20% 25%, 22% 95%, 24% 35%, 26% 60%, 28% 20%, 30% 85%, 32% 30%, 34% 70%, 36% 10%, 38% 80%, 40% 40%, 42% 90%, 44% 25%, 46% 65%, 48% 15%, 50% 90%, 52% 35%, 54% 60%, 56% 10%, 58% 85%, 60% 30%, 62% 70%, 64% 20%, 66% 80%, 68% 25%, 70% 95%, 72% 40%, 74% 60%, 76% 15%, 78% 85%, 80% 30%, 82% 70%, 84% 20%, 86% 80%, 88% 35%, 90% 90%, 92% 25%, 94% 60%, 96% 15%, 98% 80%, 100% 50%, 100% 0%);
+    }
+
+    /* Receipt internals */
+    .r-logo { text-align: center; margin-bottom: 12px; }
+    .r-logo-char {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 900;
+      color: var(--r-charcoal); line-height: 1; display: block;
+    }
+    .r-estd { font-size: 0.58rem; letter-spacing: 0.35em; color: var(--r-faded); margin: 2px 0 6px; font-family: 'Courier Prime', monospace; }
+    .r-name { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--r-charcoal); }
+    .r-addr { font-size: 0.62rem; color: var(--r-faded); line-height: 1.65; margin-top: 3px; }
+    .r-div  { border: none; border-top: 1px dashed var(--r-border); margin: 8px 0; }
+    .r-div-s{ border: none; border-top: 1px solid var(--r-border); margin: 7px 0; }
+    .r-meta { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; font-size: 0.67rem; }
+    .r-ml   { color: var(--r-faded); white-space: nowrap; }
+    .r-head {
+      display: grid; grid-template-columns: 1fr 34px 50px 52px;
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--r-charcoal);
+      padding: 5px 0 3px; border-bottom: 1px solid var(--r-charcoal);
+    }
+    .r-head span:nth-child(n+2) { text-align: right; }
+    .r-item {
+      display: grid; grid-template-columns: 1fr 34px 50px 52px;
+      font-size: 0.69rem; color: var(--r-ink);
+      padding: 4px 0; border-bottom: 1px dotted rgba(0,0,0,.08);
+      align-items: start;
+    }
+    .r-item-name { line-height: 1.35; }
+    .r-item span:nth-child(n+2) { text-align: right; font-variant-numeric: tabular-nums; }
+    .r-totals { margin-top: 3px; }
+    .r-trow { display: flex; justify-content: space-between; font-size: 0.69rem; color: var(--r-ink); padding: 2px 0; }
+    .r-trow.sm { color: var(--r-faded); font-size: 0.64rem; }
+    .r-trow.grand {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem; font-weight: 700; color: var(--r-charcoal);
+      padding: 5px 0 3px;
+    }
+    .r-footer {
+      text-align: center; font-size: 0.6rem; color: var(--r-faded);
+      letter-spacing: 0.2em; margin-top: 14px; padding-top: 8px;
+      border-top: 1px dashed var(--r-border);
+    }
+
+    /* ══ TRUST BADGE ══ */
+    .trust-note {
+      margin-top: 14px; text-align: center;
+      font-size: 11px; color: var(--muted); line-height: 1.8;
+    }
+
+    /* ══ FOOTER ══ */
+    .site-footer {
+      background: var(--ink); color: #9ca3af;
+      padding: 40px 0 24px;
+    }
+    .footer-inner { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+    .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-bottom: 32px; }
+    .footer-col-title { color: #fff; font-size: 13px; font-weight: 700; margin-bottom: 12px; }
+    .footer-col a { display: block; font-size: 13px; color: #9ca3af; margin-bottom: 6px; }
+    .footer-col a:hover { color: #fff; text-decoration: none; }
+    .footer-bottom { border-top: 1px solid #374151; padding-top: 20px; font-size: 12px; text-align: center; }
+    .footer-logo { font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .footer-logo span { color: var(--blue); }
+
+    /* ══ RESPONSIVE ══ */
+    @media (max-width: 900px) {
+      .gen-layout { grid-template-columns: 1fr; }
+      .preview-col { position: static; }
+      .footer-grid { grid-template-columns: 1fr; }
+      #receipt-container { zoom: 90%; }
+    }
+    @media (max-width: 600px) {
+      .fields-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+
+    /* ══ PRINT ══ */
+    @media print {
+      .nav, .page-header-strip, .sec-card, .action-bar, .trust-note, .site-footer { display: none !important; }
+      .gen-layout { grid-template-columns: 1fr; }
+      .preview-col { position: static; }
+      #receipt-container { zoom: 100%; transform: none; filter: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Fuel<span>Bill</span>.in</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/generator">Fuel Bill</a></li>
+      <li><a href="/food-bill" class="active">Food Bill</a></li>
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/food-bill" class="nav-cta">Generate Bill →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══ PAGE HEADER ══ -->
+<div class="page-header-strip">
+  <div class="container-main">
+    <div class="breadcrumb-bar">
+      <a href="/">Home</a>
+      <span>›</span>
+      <span>Food Bill Generator</span>
+    </div>
+    <h1>Free Food Bill Generator</h1>
+    <p>Add your restaurant details and items — CGST & SGST calculated automatically. Download as PNG instantly.</p>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<div class="container-main">
+<div class="gen-layout">
+
+  <!-- ════ LEFT: CONTROLS ════ -->
+  <div>
+
+    <!-- Step 1: Restaurant Info -->
+    <div class="sec-card">
+      <div class="sec-card-head">
+        <div class="step-badge">1</div>
+        Restaurant Info
+      </div>
+      <div class="sec-card-body">
+        <div class="fields-grid" style="grid-template-columns:1fr; margin-bottom:10px;">
+          <div class="fld">
+            <label>Restaurant Name</label>
+            <input type="text" id="restName" value="Kake Da Hotel Since 1931" oninput="liveUpdate()">
+          </div>
+        </div>
+        <div class="fields-grid" style="grid-template-columns:1fr; margin-bottom:10px;">
+          <div class="fld">
+            <label>Address</label>
+            <input type="text" id="restAddr" value="H-102, Hazipur, Sec-104, Noida" oninput="liveUpdate()">
+          </div>
+        </div>
+        <div class="fields-grid">
+          <div class="fld">
+            <label>GSTIN</label>
+            <input type="text" id="restGst" value="09ABJFR0233N1ZW" oninput="liveUpdate()">
+          </div>
+          <div class="fld">
+            <label>Phone</label>
+            <input type="text" id="restPhone" value="8826584739" oninput="liveUpdate()">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Bill Details -->
+    <div class="sec-card">
+      <div class="sec-card-head">
+        <div class="step-badge">2</div>
+        Bill Details
+      </div>
+      <div class="sec-card-body">
+        <div class="fields-grid">
+          <div class="fld">
+            <label>Customer Name</label>
+            <input type="text" id="custName" placeholder="Guest" oninput="liveUpdate()">
+          </div>
+          <div class="fld">
+            <label>Bill No.</label>
+            <input type="text" id="billNo" value="50455" oninput="liveUpdate()">
+          </div>
+          <div class="fld">
+            <label>Table / Dine In</label>
+            <input type="number" id="tableNo" value="5" min="1" oninput="liveUpdate()">
+          </div>
+          <div class="fld">
+            <label>Date &amp; Time</label>
+            <input type="datetime-local" id="billDate" oninput="liveUpdate()">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Paper Texture -->
+    <div class="sec-card">
+      <div class="sec-card-head">
+        <div class="step-badge">3</div>
+        Paper Texture
+      </div>
+      <div class="sec-card-body">
+        <div class="texture-row">
+          <label class="tex-pill">
+            <input type="radio" name="texture" value="none" checked onchange="applyTexture(this.value)">
+            <span class="tex-swatch" style="background:#faf7f2;"></span>
+            Plain
+          </label>
+          <label class="tex-pill">
+            <input type="radio" name="texture" value="1" onchange="applyTexture(this.value)">
+            <img class="tex-swatch" src="assets/images/textures/texture-1.jpeg" alt="Warm">
+            Warm
+          </label>
+          <label class="tex-pill">
+            <input type="radio" name="texture" value="2" onchange="applyTexture(this.value)">
+            <img class="tex-swatch" src="assets/images/textures/texture-2.jpeg" alt="Aged">
+            Aged
+          </label>
+          <label class="tex-pill">
+            <input type="radio" name="texture" value="3" onchange="applyTexture(this.value)">
+            <img class="tex-swatch" src="assets/images/textures/texture-3.jpeg" alt="Linen">
+            Linen
+          </label>
+          <label class="tex-pill">
+            <input type="radio" name="texture" value="4" onchange="applyTexture(this.value)">
+            <img class="tex-swatch" src="assets/images/textures/texture-4.jpg" alt="Smooth">
+            Smooth
+          </label>
+          <label class="tex-pill">
+            <input type="radio" name="texture" value="6" onchange="applyTexture(this.value)">
+            <img class="tex-swatch" src="assets/images/textures/texture-6.jpeg" alt="Mottled">
+            Mottled
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4: Items -->
+    <div class="sec-card">
+      <div class="sec-card-head">
+        <div class="step-badge">4</div>
+        Menu Items
+      </div>
+      <div class="sec-card-body">
+        <div class="items-col-heads">
+          <span>Item Name</span>
+          <span>Qty</span>
+          <span>Price ₹</span>
+          <span></span>
+        </div>
+        <div id="itemsContainer"></div>
+        <button class="btn-add-item" onclick="addItem()">+ Add Item</button>
+      </div>
+    </div>
+
+    <!-- Step 5: Tax Options -->
+    <div class="sec-card">
+      <div class="sec-card-head">
+        <div class="step-badge">5</div>
+        Tax &amp; Charges
+      </div>
+      <div class="sec-card-body" style="display:flex;flex-direction:column;gap:8px;">
+        <label class="svc-toggle">
+          <input type="checkbox" id="serviceCharge" checked onchange="liveUpdate()">
+          Include Optional Service Contribution (10%)
+        </label>
+        <div style="font-size:11px;color:var(--muted);padding:0 4px;">
+          CGST 2.5% &amp; SGST 2.5% are always applied on the taxable amount.
+        </div>
+      </div>
+    </div>
+
+    <!-- Action bar -->
+    <div class="sec-card">
+      <div class="action-bar">
+        <button class="btn-reset-sec" onclick="resetAll()">↺ Reset</button>
+        <button class="btn-dl" id="dlBtn" onclick="downloadPNG()">
+          ⬇ Download PNG
+        </button>
+      </div>
+    </div>
+
+  </div><!-- /left -->
+
+  <!-- ════ RIGHT: PREVIEW ════ -->
+  <div class="preview-col">
+    <div class="preview-card">
+      <div class="preview-card-head">
+        <span>Live Preview</span>
+        <span class="live-dot">● Updates instantly</span>
+      </div>
+
+      <!-- THE RECEIPT -->
+      <div id="receipt-container">
+        <div class="receipt" id="receipt">
+          <!-- Logo / Header -->
+          <div class="r-logo">
+            <span class="r-logo-char" id="rChar">K</span>
+            <div class="r-estd">Estd. 1931</div>
+            <div class="r-name" id="rName">Kake Da Hotel Since 1931</div>
+            <div class="r-addr" id="rAddr">H-102, Hazipur, Sec-104, Noida<br>GSTIN: 09ABJFR0233N1ZW &nbsp;|&nbsp; Mob: 8826584739</div>
+          </div>
+
+          <hr class="r-div-s">
+
+          <!-- Meta -->
+          <div class="r-meta">
+            <span class="r-ml">Name:</span><span id="rCust">—</span>
+            <span class="r-ml">Date:</span><span id="rDate">—</span>
+            <span class="r-ml">Bill No:</span><span id="rBill">50455</span>
+            <span class="r-ml">Dine In:</span><span id="rTable">5</span>
+            <span class="r-ml">Cashier:</span><span>Biller</span>
+          </div>
+
+          <hr class="r-div">
+
+          <!-- Items table -->
+          <div class="r-head">
+            <span>Item</span><span>Qty</span><span>Price</span><span>Amt</span>
+          </div>
+          <div id="rItems"></div>
+
+          <hr class="r-div">
+
+          <!-- Totals -->
+          <div class="r-totals">
+            <div class="r-trow">
+              <span>Sub Total &nbsp;<span id="rQtyLbl" style="font-size:0.6rem;color:var(--r-faded)"></span></span>
+              <span id="rSub">₹0.00</span>
+            </div>
+            <div class="r-trow sm" id="rSvcRow" style="display:none">
+              <span>Service Charge (10%)</span>
+              <span id="rSvc">₹0.00</span>
+            </div>
+            <div class="r-trow sm">
+              <span>CGST 2.5%</span>
+              <span id="rCgst">₹0.00</span>
+            </div>
+            <div class="r-trow sm">
+              <span>SGST 2.5%</span>
+              <span id="rSgst">₹0.00</span>
+            </div>
+            <div class="r-trow sm">
+              <span>Round Off</span>
+              <span id="rRound">+0.00</span>
+            </div>
+          </div>
+
+          <hr class="r-div-s">
+
+          <div class="r-trow grand">
+            <span>Grand Total</span>
+            <span id="rGrand">₹0.00</span>
+          </div>
+
+          <div class="r-footer">॥ Thanks For Your Visit ॥</div>
+        </div><!-- /receipt -->
+      </div><!-- /receipt-container -->
+    </div><!-- /preview-card -->
+
+    <div class="trust-note">
+      ✓ Free &nbsp;·&nbsp; ✓ No Watermark &nbsp;·&nbsp; ✓ No Signup<br>
+      ✓ CGST &amp; SGST auto-calculated &nbsp;·&nbsp; ✓ PNG Download
+    </div>
+  </div><!-- /preview-col -->
+
+</div><!-- /gen-layout -->
+</div><!-- /container-main -->
+
+<!-- ══ FOOTER ══ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">Fuel<span>Bill</span>.in</div>
+        <p style="font-size:13px;margin-bottom:0;">India's free bill generator. Create realistic fuel and food receipts instantly.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Quick Links</div>
+        <a href="/">Home</a>
+        <a href="/generator">Fuel Bill Generator</a>
+        <a href="/food-bill">Food Bill Generator</a>
+        <a href="/#how-it-works">How It Works</a>
+        <a href="/#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Fuel Templates</div>
+        <a href="/generator">Indian Oil Bill Generator</a>
+        <a href="/generator">HP Petrol Bill Generator</a>
+        <a href="/generator">Bharat Petroleum Bill Generator</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 FuelBill.in — Free Petrol, Diesel &amp; Food Receipt Generator India. For educational purposes only.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+/* ═══════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════ */
+const items = [];
+let idCtr = 0;
+
+/* ═══════════════════════════════════════════
+   ITEM MANAGEMENT
+═══════════════════════════════════════════ */
+function addItem(name = '', qty = 1, price = 0) {
+  const id = ++idCtr;
+  items.push({ id, name, qty, price });
+  renderItemEditor();
+  liveUpdate();
+}
+
+function removeItem(id) {
+  const i = items.findIndex(x => x.id === id);
+  if (i > -1) items.splice(i, 1);
+  renderItemEditor();
+  liveUpdate();
+}
+
+function updateItem(id, field, val) {
+  const item = items.find(x => x.id === id);
+  if (item) {
+    item[field] = field === 'name' ? val : (parseFloat(val) || 0);
+    liveUpdate();
+  }
+}
+
+function renderItemEditor() {
+  const c = document.getElementById('itemsContainer');
+  c.innerHTML = '';
+  items.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'item-row';
+    row.innerHTML = `
+      <input type="text" placeholder="Item name" value="${escHtml(item.name)}"
+        oninput="updateItem(${item.id},'name',this.value)">
+      <input type="number" min="1" value="${item.qty}"
+        oninput="updateItem(${item.id},'qty',this.value)">
+      <input type="number" min="0" step="0.01" value="${item.price}"
+        oninput="updateItem(${item.id},'price',this.value)">
+      <button class="btn-del-row" onclick="removeItem(${item.id})" title="Remove">✕</button>
+    `;
+    c.appendChild(row);
+  });
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* ═══════════════════════════════════════════
+   LIVE UPDATE (receipt re-renders on every input)
+═══════════════════════════════════════════ */
+function liveUpdate() {
+  const restName   = v('restName') || 'Restaurant';
+  const restAddr   = v('restAddr');
+  const restGst    = v('restGst');
+  const restPhone  = v('restPhone');
+  const custName   = v('custName') || '—';
+  const billNo     = v('billNo');
+  const tableNo    = v('tableNo');
+  const billDate   = v('billDate');
+  const withSvc    = document.getElementById('serviceCharge').checked;
+
+  // Header
+  document.getElementById('rChar').textContent  = restName.charAt(0).toUpperCase();
+  document.getElementById('rName').textContent  = restName;
+  document.getElementById('rAddr').innerHTML    =
+    `${escHtml(restAddr)}<br>GSTIN: ${escHtml(restGst)} &nbsp;|&nbsp; Mob: ${escHtml(restPhone)}`;
+  document.getElementById('rCust').textContent  = custName;
+  document.getElementById('rBill').textContent  = billNo;
+  document.getElementById('rTable').textContent = tableNo;
+
+  // Date
+  if (billDate) {
+    const d   = new Date(billDate);
+    const pad = n => String(n).padStart(2,'0');
+    document.getElementById('rDate').textContent =
+      `${pad(d.getDate())}/${pad(d.getMonth()+1)}/${String(d.getFullYear()).slice(-2)} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  }
+
+  // Items on receipt
+  let subtotal = 0, totalQty = 0;
+  const rItems = document.getElementById('rItems');
+  rItems.innerHTML = '';
+
+  items.forEach(item => {
+    if (!item.name.trim()) return;
+    const amount = item.qty * item.price;
+    subtotal  += amount;
+    totalQty  += item.qty;
+    const row = document.createElement('div');
+    row.className = 'r-item';
+    row.innerHTML = `
+      <span class="r-item-name">${escHtml(item.name)}</span>
+      <span>${item.qty}</span>
+      <span>${fmt(item.price)}</span>
+      <span>${fmt(amount)}</span>
+    `;
+    rItems.appendChild(row);
+  });
+
+  // Totals
+  const svc      = withSvc ? subtotal * 0.10 : 0;
+  const taxBase  = subtotal + svc;
+  const cgst     = taxBase * 0.025;
+  const sgst     = taxBase * 0.025;
+  const rawTotal = taxBase + cgst + sgst;
+  const rounded  = Math.round(rawTotal);
+  const roundOff = rounded - rawTotal;
+
+  document.getElementById('rQtyLbl').textContent = totalQty > 0 ? `(${totalQty} qty)` : '';
+  document.getElementById('rSub').textContent    = `₹${fmt(subtotal)}`;
+
+  const svcRow = document.getElementById('rSvcRow');
+  if (withSvc && subtotal > 0) {
+    svcRow.style.display = 'flex';
+    document.getElementById('rSvc').textContent = `₹${fmt(svc)}`;
+  } else {
+    svcRow.style.display = 'none';
+  }
+
+  document.getElementById('rCgst').textContent  = `₹${fmt(cgst)}`;
+  document.getElementById('rSgst').textContent  = `₹${fmt(sgst)}`;
+  document.getElementById('rRound').textContent = `${roundOff >= 0 ? '+' : ''}${fmt(roundOff)}`;
+  document.getElementById('rGrand').textContent = `₹${rounded.toFixed(2)}`;
+}
+
+/* ═══════════════════════════════════════════
+   TEXTURE
+═══════════════════════════════════════════ */
+function applyTexture(val) {
+  const r = document.getElementById('receipt');
+  if (val === 'none') {
+    r.style.backgroundImage = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E")`;
+    r.style.backgroundSize = '300px 300px';
+    r.style.backgroundBlendMode = 'normal';
+    r.style.backgroundColor = '#faf7f2';
+  } else {
+    const ext = val === '4' ? 'jpg' : 'jpeg';
+    r.style.backgroundImage = `url("assets/images/textures/texture-${val}.${ext}")`;
+    r.style.backgroundSize = 'cover';
+    r.style.backgroundBlendMode = 'multiply';
+    r.style.backgroundColor = '#faf7f2';
+  }
+}
+
+/* ═══════════════════════════════════════════
+   DOWNLOAD
+═══════════════════════════════════════════ */
+function downloadPNG() {
+  const btn = document.getElementById('dlBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Generating…';
+
+  const receipt = document.getElementById('receipt');
+  html2canvas(receipt, {
+    scale: 2.5,
+    useCORS: true,
+    backgroundColor: null,
+    logging: false
+  }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = `food-bill-${Date.now()}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    btn.disabled = false;
+    btn.innerHTML = '⬇ Download PNG';
+  }).catch(() => {
+    btn.disabled = false;
+    btn.innerHTML = '⬇ Download PNG';
+    alert('Download failed. Try printing instead (Ctrl+P).');
+  });
+}
+
+/* ═══════════════════════════════════════════
+   RESET
+═══════════════════════════════════════════ */
+function resetAll() {
+  document.getElementById('restName').value  = 'Kake Da Hotel Since 1931';
+  document.getElementById('restAddr').value  = 'H-102, Hazipur, Sec-104, Noida';
+  document.getElementById('restGst').value   = '09ABJFR0233N1ZW';
+  document.getElementById('restPhone').value = '8826584739';
+  document.getElementById('custName').value  = '';
+  document.getElementById('billNo').value    = '50455';
+  document.getElementById('tableNo').value   = '5';
+  document.getElementById('serviceCharge').checked = true;
+  items.length = 0; idCtr = 0;
+  loadDefaultItems();
+  document.querySelector('input[name="texture"][value="none"]').checked = true;
+  applyTexture('none');
+}
+
+/* ═══════════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════════ */
+function v(id) { return document.getElementById(id).value; }
+function fmt(n) { return (Math.abs(n) < 0.005 ? 0 : n).toFixed(2); }
+
+function loadDefaultItems() {
+  [
+    { name: 'Bhatti Ka Chaap (Full)',          qty: 1,  price: 299 },
+    { name: 'Dal Makhni (12 Hrs Coal Cooked)', qty: 1,  price: 349 },
+    { name: 'Veg Hakka Noodles',               qty: 1,  price: 279 },
+    { name: 'Mix Vegetable (500ML)',            qty: 1,  price: 369 },
+    { name: 'Tandoori Roti',                   qty: 10, price: 30  },
+    { name: 'Kadhai Mushroom (Full 500ML)',     qty: 1,  price: 369 },
+    { name: 'Mineral Water',                   qty: 3,  price: 30  },
+  ].forEach(s => { const id = ++idCtr; items.push({ id, ...s }); });
+  renderItemEditor();
+}
+
+/* ═══════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  // Set current date/time
+  const now = new Date();
+  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+  document.getElementById('billDate').value = now.toISOString().slice(0,16);
+
+  loadDefaultItems();
+  liveUpdate();
+});
+</script>
+</body>
+</html>
